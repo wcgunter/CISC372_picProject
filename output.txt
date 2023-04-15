@@ -1,0 +1,11 @@
+Script started on Sat Apr 15 18:18:37 2023
+]0;wgunter@r1n00.darwin:~/CISC372_picProject[?1034h[wgunter@r1n00 CISC372_picProject]$ ./image       srun image pic1.jpg blur    edge
+Took 8 seconds
+]0;wgunter@r1n00.darwin:~/CISC372_picProject[wgunter@r1n00 CISC372_picProject]$ srun image_pthreads pic1.jpg edge
+Took 5 seconds
+]0;wgunter@r1n00.darwin:~/CISC372_picProject[wgunter@r1n00 CISC372_picProject]$ srun image_omp pic1.jpg edge
+Took 6 seconds
+]0;wgunter@r1n00.darwin:~/CISC372_picProject[wgunter@r1n00 CISC372_picProject]$ exit
+exit
+
+Script done on Sat Apr 15 18:19:28 2023
