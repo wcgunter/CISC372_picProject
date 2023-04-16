@@ -135,13 +135,13 @@ int main(int argc,char** argv){
         printf("Error loading file %s.\n",fileName);
         return -1;
     }
+    //moved time start per email with silber
+    t1=time(NULL);
+
     destImage.bpp=srcImage.bpp;
     destImage.height=srcImage.height;
     destImage.width=srcImage.width;
     destImage.data=malloc(sizeof(uint8_t)*destImage.width*destImage.bpp*destImage.height);
-
-    //moved time start per email with silber
-    t1=time(NULL);
 
     //adding code for pthreads here
     pthread_t* threads;
@@ -155,7 +155,7 @@ int main(int argc,char** argv){
         args->num_threads = NUM_THREADS;
         pthread_create(&threads[thread], NULL, convolute, args);
     }
-
+    t2=time(NULL);
     stbi_write_png("output.png",destImage.width,destImage.height,destImage.bpp,destImage.data,destImage.bpp*destImage.width);
     stbi_image_free(srcImage.data);
 
@@ -168,7 +168,6 @@ int main(int argc,char** argv){
     free(threads);
     
     free(destImage.data);
-    t2=time(NULL);
     printf("Took %ld seconds\n",t2-t1);
    return 0;
 }
