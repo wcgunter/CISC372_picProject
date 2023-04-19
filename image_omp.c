@@ -106,6 +106,7 @@ enum KernelTypes GetKernelType(char* type){
 int main(int argc,char** argv){
     long t1,t2;
 
+    t1=time(NULL);
     stbi_set_flip_vertically_on_load(0); 
     if (argc!=3) return Usage();
     char* fileName=argv[1];
@@ -120,8 +121,6 @@ int main(int argc,char** argv){
         printf("Error loading file %s.\n",fileName);
         return -1;
     }
-    //moved time start per email with silber
-    t1=time(NULL);
 
     destImage.bpp=srcImage.bpp;
     destImage.height=srcImage.height;
@@ -132,9 +131,9 @@ int main(int argc,char** argv){
     #pragma omp parallel
     convolute(&srcImage,&destImage,algorithms[type]);
 
-    t2=time(NULL);
     stbi_write_png("output.png",destImage.width,destImage.height,destImage.bpp,destImage.data,destImage.bpp*destImage.width);
     stbi_image_free(srcImage.data);
+    t2=time(NULL);
     
     free(destImage.data);
     printf("Took %ld seconds\n",t2-t1);

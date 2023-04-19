@@ -147,6 +147,7 @@ void convolute(thread_args **args, int numThreads) {
 int main(int argc,char** argv){
     long t1,t2;
 
+    t1=time(NULL);  
     stbi_set_flip_vertically_on_load(0); 
     if (argc!=3) return Usage();
     char* fileName=argv[1];
@@ -162,18 +163,16 @@ int main(int argc,char** argv){
         return -1;
     }
     thread_args **args = setupThreadArgs(NUM_THREADS, &srcImage, &destImage, type);
-    //moved time start per email with silber
-    t1=time(NULL);  
     destImage.bpp=srcImage.bpp;
     destImage.height=srcImage.height;
     destImage.width=srcImage.width;
     destImage.data=malloc(sizeof(uint8_t)*destImage.width*destImage.bpp*destImage.height);
 
     convolute(args, NUM_THREADS);
-    t2=time(NULL);
     stbi_write_png("output.png",destImage.width,destImage.height,destImage.bpp,destImage.data,destImage.bpp*destImage.width);
     stbi_image_free(srcImage.data);
     
+    t2=time(NULL);
     free(destImage.data);
 
     //free structs in threadargs array
