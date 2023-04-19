@@ -1,0 +1,9 @@
+Script started on Wed Apr 19 16:52:44 2023
+]0;wgunter@r1n10.darwin:~/CISC372_picProject[?1034h[wgunter@r1n10 CISC372_picProject]$ exit    srun ./image pic1.jpg edge
+Took 7 seconds
+]0;wgunter@r1n10.darwin:~/CISC372_picProject[wgunter@r1n10 CISC372_picProject]$ srun ./image) _omp pic1.jpg edge
+Took 7 seconds
+]0;wgunter@r1n10.darwin:~/CISC372_picProject[wgunter@r1n10 CISC372_picProject]$ exit
+exit
+
+Script done on Wed Apr 19 16:53:20 2023
